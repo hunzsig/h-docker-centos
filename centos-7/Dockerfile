@@ -21,6 +21,7 @@ RUN yum -y install wget
 RUN yum -y install curl
 RUN yum -y install net-tools
 RUN yum -y install git
+RUN yum -y install vim
 
 # 镜像信息
 LABEL Author="hunzsig-centos-7"

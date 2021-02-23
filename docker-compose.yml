@@ -11,7 +11,7 @@ services:
 
   centos-7:
     restart: always
-    build: centos-7
+    build: ./ubuntu-18
     container_name: centos-7
     hostname: centos-7
     ports:
