@@ -1,7 +1,7 @@
 version: "3.3"
 
 networks:
-  net:
+  web:
     driver: bridge
     ipam:
       config:
@@ -15,11 +15,11 @@ services:
     container_name: centos-7.8
     hostname: centos-7.8
     ports:
-      - 9000
+      - 666
     volumes:
       - ${WORKPLACE_PWD}:/workspace
     networks:
-      net:
+      web:
         ipv4_address: ${NETWORK_CENTOS_IP}
         mac_address: ${NETWORK_CENTOS_MAC}
 
