@@ -1,7 +1,7 @@
 version: "3.3"
 
 networks:
-  centos:
+  net:
     driver: bridge
     ipam:
       config:
@@ -19,7 +19,7 @@ services:
     volumes:
       - ${WORKPLACE_PWD}:/workspace
     networks:
-      web:
+      net:
         ipv4_address: ${NETWORK_CENTOS_IP}
         mac_address: ${NETWORK_CENTOS_MAC}
 
