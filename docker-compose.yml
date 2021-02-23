@@ -1,0 +1,27 @@
+version: "3.3"
+
+networks:
+  centos:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: ${NETWORK}
+
+services:
+
+  centos-7.8:
+    restart: always
+    build: ./centos-7.8
+    container_name: centos-7.8
+    hostname: centos-7.8
+    ports:
+      - 9000
+    volumes:
+      - ${WORKPLACE_PWD}:/workspace
+    networks:
+      web:
+        ipv4_address: ${NETWORK_CENTOS_IP}
+        mac_address: ${NETWORK_CENTOS_MAC}
+
+volumes:
+  my_data:
