@@ -1,7 +1,6 @@
 
 FROM centos:7
 
-ENV ACCEPT_EULA=Y
 ENV container docker
 
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
@@ -16,15 +15,11 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 VOLUME [ "/sys/fs/cgroup" ]
 CMD ["/usr/sbin/init"]
 
-RUN yum install wget
-RUN yum install curl
+RUN yum -y update
 
-RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
-RUN wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
-RUN yum clean all
-RUN yum makecache
-RUN yum update
-
+RUN yum -y install wget
+RUN yum -y install curl
+RUN yum -y install net-tools
 RUN yum -y install git
 
 # 镜像信息
