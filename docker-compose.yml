@@ -9,19 +9,19 @@ networks:
 
 services:
 
-  centos-7.8:
+  centos-7:
     restart: always
-    build: ./centos-7.8
-    container_name: centos-7.8
-    hostname: centos-7.8
+    build: centos-7
+    container_name: centos-7
+    hostname: centos-7
     ports:
-      - 666
+      - 6666
     volumes:
       - ${WORKPLACE_PWD}:/workspace
+    mac_address: ${NETWORK_CENTOS_MAC}
     networks:
       web:
         ipv4_address: ${NETWORK_CENTOS_IP}
-        mac_address: ${NETWORK_CENTOS_MAC}
 
 volumes:
   my_data:

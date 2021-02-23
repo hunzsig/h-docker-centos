@@ -1,5 +1,5 @@
 
-FROM centos:7.8
+FROM centos:7
 
 ENV ACCEPT_EULA=Y
 ENV container docker
@@ -28,6 +28,6 @@ RUN yum update
 RUN yum -y install git
 
 # 镜像信息
-LABEL Author="hunzsig-centos-7.8"
+LABEL Author="hunzsig-centos-7"
 LABEL Version="2021.02"
-LABEL Description="centos-7.8"
+LABEL Description="centos-7"
