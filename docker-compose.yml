@@ -9,19 +9,33 @@ networks:
 
 services:
 
-  centos-7:
+  #  centos-7:
+  #    restart: always
+  #    build: ./images/centos-7
+  #    container_name: centos-7
+  #    hostname: centos-7
+  #    ports:
+  #      - 6666
+  #    volumes:
+  #      - ${WORKPLACE_PWD}:/workspace
+  #    mac_address: ${NETWORK_CENTOS_MAC}
+  #    networks:
+  #      web:
+  #        ipv4_address: ${NETWORK_CENTOS_IP}
+
+  ubuntu-18:
     restart: always
-    build: ./ubuntu-18
-    container_name: centos-7
-    hostname: centos-7
+    build: ./images/ubuntu-18
+    container_name: ubuntu-18
+    hostname: ubuntu-18
     ports:
-      - 6666
+      - 6677
     volumes:
       - ${WORKPLACE_PWD}:/workspace
-    mac_address: ${NETWORK_CENTOS_MAC}
+    mac_address: ${NETWORK_UBUNTU_MAC}
     networks:
       web:
-        ipv4_address: ${NETWORK_CENTOS_IP}
+        ipv4_address: ${NETWORK_UBUNTU_IP}
 
 volumes:
   my_data:
