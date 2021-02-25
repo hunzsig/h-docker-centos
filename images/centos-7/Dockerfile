@@ -23,6 +23,17 @@ RUN yum -y install net-tools
 RUN yum -y install git
 RUN yum -y install vim
 
+RUN modinfo tun
+RUN modprobe tun
+RUN lsmid | grep tun
+
+RUN echo -e "[nux-misc]\nname=Nux Misc\nbaseurl=http://li.nux.ro/download/nux/misc/el7/x86_64/\nenabled=0\ngpgcheck=1\ngpgkey=http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro" >> /etc/yum.repos.d/nux-misc.repo
+RUN yum -y --enablerepo=nux-misc install tunctl
+RUN tunctl -t enp2s0
+RUN ifconfig enp2s0 down
+RUN ifconfig enp2s0 hw ether 0c:9d:92:c8:cf:04
+RUN ifconfig enp2s0 up
+
 # 镜像信息
 LABEL Author="hunzsig-centos-7"
 LABEL Version="2021.02"
